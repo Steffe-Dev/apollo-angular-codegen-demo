@@ -1,0 +1,11 @@
+query LatestReviews {
+  latestReviews {
+    id
+    comment
+    rating
+    location {
+      id
+      name
+    }
+  }
+}

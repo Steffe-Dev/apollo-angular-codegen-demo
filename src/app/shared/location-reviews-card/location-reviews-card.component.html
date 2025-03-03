@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-2 border-l-8 border-l-teal-200 pl-4">
+  @if (review()) {
+  <p class="bg-gradient-to-r from-pink-100 to-pink-500 p-1">
+    Rating - <span class="font-bold">{{ review().rating }}</span>
+  </p>
+  <p>{{ review().comment }}</p>
+  <!-- ! Show different behaviour for different queries. If the location is not fetched, this will not show -->
+  @if (review().location) {
+  <div class="italic">
+    <p class="text-sm">Review for</p>
+    <a class="underline" [routerLink]="['/api-stuff/', review().location.id]">{{
+      review().location.name
+    }}</a>
+  </div>
+  } }
+</div>

@@ -1,0 +1,10 @@
+query LocationReviews($id: ID!) {
+  location(id: $id) {
+    id
+    reviewsForLocation {
+      id
+      comment
+      rating
+    }
+  }
+}

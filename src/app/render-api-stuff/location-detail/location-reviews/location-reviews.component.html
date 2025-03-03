@@ -1,0 +1,10 @@
+@if (locationReviews$ | async; as reviews) {
+<div class="flex flex-col gap-4">
+  @for (review of reviews; track review?.id) {
+  <app-location-reviews-card [review]="review"></app-location-reviews-card>
+  } @empty {
+  <!-- ! Can show empty state here using Zenn-la -->
+  <p>No reviews yet</p>
+  }
+</div>
+}

@@ -1,0 +1,13 @@
+query LocationDetails($id: ID!) {
+  location(id: $id) {
+    ...LocationPlaceholder
+    description
+    overallRating
+  }
+}
+
+query LocationPlaceholder($id: ID!) {
+  location(id: $id) {
+    ...LocationPlaceholder
+  }
+}

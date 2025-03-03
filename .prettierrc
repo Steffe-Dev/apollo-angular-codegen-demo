@@ -1,0 +1,22 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 100,
+  "trailingComma": "all",
+  "bracketSameLine": false,
+  "quoteProps": "consistent",
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": { "parser": "angular" }
+    },
+    {
+      "files": ".prettierrc",
+      "options": { "parser": "json" }
+    },
+    {
+      "files": "*.webmanifest",
+      "options": { "parser": "json" }
+    }
+  ]
+}

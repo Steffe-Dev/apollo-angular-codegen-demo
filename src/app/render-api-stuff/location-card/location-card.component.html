@@ -1,0 +1,11 @@
+<div class="bg-slate-200 hover:bg-slate-300 p-4 rounded-lg shadow-md flex flex-col gap-2 h-full">
+  <img
+    class="border-8 border-teal-200 rounded-lg"
+    [src]="location()?.photo"
+    alt="{{ location()?.name }}"
+  />
+  <div class="flex">
+    <h3 class="text-xl font-bold">{{ location()?.name }}</h3>
+  </div>
+  <!-- <p class="text-sm text-slate-800">{{ location()?.description }}</p> -->
+</div>

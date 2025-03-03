@@ -1,0 +1,11 @@
+query Locations {
+  locations {
+    ...LocationPlaceholder
+  }
+}
+
+fragment LocationPlaceholder on Location {
+  id
+  name
+  photo
+}

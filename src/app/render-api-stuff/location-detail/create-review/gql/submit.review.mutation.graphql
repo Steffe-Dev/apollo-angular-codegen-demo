@@ -1,0 +1,15 @@
+mutation SubmitReview($input: LocationReviewInput!) {
+  submitReview(locationReview: $input) {
+    code
+    success
+    message
+    locationReview {
+      id
+      comment
+      rating
+      location {
+        id
+      }
+    }
+  }
+}
