@@ -1,4 +1,6 @@
-# JrApollo
+# Angular Apollo codegen demo
+
+This project serves as a demo to show basic Apollo client functionality inside an Angular app by making use of the code generation tool of `apollo-angular`, such that queries and mutations can be written inside `.graphql` files. It also shows a few good patterns for defining queries on a component level, and how to use type inference to your advantage.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
 
