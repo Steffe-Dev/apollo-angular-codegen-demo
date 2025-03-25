@@ -1,12 +1,8 @@
 <div class="max-w-3xl mx-auto">
   <h2 class="text-2xl font-light italic mb-3">Latest reviews</h2>
-  @if (latestReviews$ | async; as reviews) {
   <div class="flex flex-col gap-3">
-    @for (review of reviews; track review.id) {
-    <app-location-reviews-card [review]="review"></app-location-reviews-card>
+    @for (review of latestReviews(); track review.id) {
+      <app-location-reviews-card [review]="review" />
     }
   </div>
-  } @else {
-  <p>Loading...</p>
-  }
 </div>
