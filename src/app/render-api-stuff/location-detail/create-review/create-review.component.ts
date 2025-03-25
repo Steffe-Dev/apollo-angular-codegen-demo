@@ -17,6 +17,7 @@ type LocationReviewInputForm = FormControlInterface<Omit<LocationReviewInput, 'l
 })
 export class CreateReviewComponent {
   private readonly createReviewService = inject(CreateReviewService)
+  private readonly destroyRef = inject(DestroyRef)
   locationId = input<string>('')
   submitted = signal(false)
   submitResult = signal<{ success: boolean; message: string } | null>(null)
@@ -28,8 +29,6 @@ export class CreateReviewComponent {
       validators: [Validators.required, Validators.min(1), Validators.max(5)],
     }),
   })
-
-  constructor(private destroyRef: DestroyRef) {}
 
   onSubmit(): void {
     this.submitted.set(true)

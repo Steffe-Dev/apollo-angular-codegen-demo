@@ -1,15 +1,11 @@
-@let locations = (locations$ | async); @if (locations) {
 <div class="p-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-  @for (location of locations; track location.id) {
-  <app-location-card
-    class="h-full"
-    [location]="location"
-    [routerLink]="['/api-stuff', location.id]"
-  />
+  @for (location of locations(); track location.id) {
+    <app-location-card
+      class="h-full"
+      [location]="location"
+      [routerLink]="['/api-stuff', location.id]"
+    />
   } @empty {
-  <li>No locations found</li>
+    <li>No locations found</li>
   }
 </div>
-} @else {
-<p>Loading...</p>
-}

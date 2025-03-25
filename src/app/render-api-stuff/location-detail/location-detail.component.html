@@ -1,39 +1,42 @@
-@if (location$ | async; as location) {
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-  <div class="flex flex-col gap-4 border-l-8 border-teal-200 pl-4">
-    <h1 class="text-3xl font-light italic">{{ location.name }}</h1>
-    <!-- ! This edge case is important. 0 is a valid number here. -->
-    @if (Number.isFinite(location.overallRating)) {
-    <p><strong>Rating:</strong> {{ location.overallRating }} / 5</p>
-    } @else {
-    <p>Loading rating...</p>
-    }
-    <img [src]="location.photo" alt="{{ location.name }}" class="shadow-md" />
-    @if (location.description) {
-    <p>{{ location.description }}</p>
-    } @else {
-    <p>Loading description...</p>
-    }
-    <hr />
-    <app-create-review [locationId]="location.id"></app-create-review>
-  </div>
-  <div class="flex flex-col gap-3">
-    <h2 class="text-2xl font-light italic">
-      Reviews @if (locationReviewsCount$ | async; as count) { ({{ count }}) }
-    </h2>
-    @defer(on hover) {
-    <app-location-reviews [locationId]="location.id"></app-location-reviews>
-    } @placeholder {
-    <div class="flex justify-center items-center bg-slate-300/10 py-4">
-      <p>Show reviews</p>
+@if (location(); as location) {
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="flex flex-col gap-4 border-l-8 border-teal-200 pl-4">
+      <h1 class="text-3xl font-light italic">{{ location.name }}</h1>
+      <!-- ! This edge case is important. 0 is a valid number here. -->
+      @if (Number.isFinite(location.overallRating)) {
+        <p><strong>Rating:</strong> {{ location.overallRating }} / 5</p>
+      } @else {
+        <p>Loading rating...</p>
+      }
+      <img [src]="location.photo" alt="{{ location.name }}" class="shadow-md" />
+      @if (location.description) {
+        <p>{{ location.description }}</p>
+      } @else {
+        <p>Loading description...</p>
+      }
+      <hr />
+      <app-create-review [locationId]="location.id"></app-create-review>
     </div>
-    } @loading (after 500ms; minimum 3s) {
-    <div class="flex justify-center items-center py-4">
-      <p class="animate-pulse">Loading reviews...</p>
+    <div class="flex flex-col gap-3">
+      <h2 class="text-2xl font-light italic">
+        Reviews
+        @if (locationReviewsCount(); as count) {
+          ({{ count }})
+        }
+      </h2>
+      @defer (on hover) {
+        <app-location-reviews [locationId]="location.id"></app-location-reviews>
+      } @placeholder {
+        <div class="flex justify-center items-center bg-slate-300/10 py-4">
+          <p>Show reviews</p>
+        </div>
+      } @loading (after 500ms; minimum 3s) {
+        <div class="flex justify-center items-center py-4">
+          <p class="animate-pulse">Loading reviews...</p>
+        </div>
+      }
     </div>
-    }
   </div>
-</div>
 } @else {
   <p>Loading...</p>
 }

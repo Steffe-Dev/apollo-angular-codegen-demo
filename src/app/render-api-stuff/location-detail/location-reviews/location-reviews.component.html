@@ -1,10 +1,9 @@
-@if (locationReviews$ | async; as reviews) {
 <div class="flex flex-col gap-4">
-  @for (review of reviews; track review?.id) {
-  <app-location-reviews-card [review]="review"></app-location-reviews-card>
+  @for (review of locationReviews(); track review?.id) {
+    <app-location-reviews-card [review]="review" />
   } @empty {
-  <!-- ! Can show empty state here using Zenn-la -->
-  <p>No reviews yet</p>
+    <!-- ! Can show empty state here using Zenn-la -->
+    <!-- Only issue is that it shows the empty state while loading -->
+    <p>No reviews yet</p>
   }
 </div>
-}
